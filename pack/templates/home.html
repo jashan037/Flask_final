@@ -1,0 +1,48 @@
+{%extends 'base_home.html'%}
+{%block head%}
+<title>FLIX - Discover Movies</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+{%endblock%}
+
+{%block body%}
+<div class="spline-container">
+    <iframe src='https://my.spline.design/dunes-957ae3a5f3155c2d746fcf0d71776458/' frameborder='0' width='100%' height='100%'></iframe>
+</div>
+
+<div class="main-content">
+    {% include 'includes/navbar.html' %}
+
+    <main>
+        <section class="movies">
+            <h2>Popular Movies</h2>
+            <div class="movie-list">
+                {% for movie in movies %}
+                <div class="movie" onclick=window.location.href='{{ url_for("movie_detail", movie_id=movie.id) }}'>
+                    <div class="movie-poster">
+                        <img src="{{ movie.image_url }}" alt="{{ movie.title }}">
+                        {% if movie.ratings %}
+                        <div class="movie-rating">
+                            <span class="rating-value">{{ "%.1f"|format(movie.ratings|map(attribute='rating')|sum / movie.ratings|length) }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="movie-info">
+                        <h3>{{ movie.title }}</h3>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</div>
+
+<footer>
+    <p>&copy; 2025 IMDb Clone. All Rights Reserved.</p>
+</footer>
+
+<script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+    });
+</script>
+{%endblock%}

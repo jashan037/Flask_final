@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+    {%block head%}{%endblock%}
+</head>
+<body>
+    {%block body%}{%endblock%}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const nav = document.querySelector('nav');
+            
+            if (navToggle && nav) {
+                // Toggle menu when clicking hamburger
+                navToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Prevent event from bubbling
+                    nav.classList.toggle('active');
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (nav.classList.contains('active') && 
+                        !nav.contains(e.target) && 
+                        !navToggle.contains(e.target)) {
+                        nav.classList.remove('active');
+                    }
+                });
+
+                // Prevent menu from closing when clicking inside nav
+                nav.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+
+                // Close menu when clicking a nav link
+                nav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

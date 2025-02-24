@@ -1,0 +1,17 @@
+<header>
+    <div class="logo">FLIX</div>
+    <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <form action="{{ url_for('search') }}" method="get" class="search-form">
+        {{ search_form.hidden_tag() }}
+        {{ search_form.search_query(class="search-input", placeholder="Search movies...") }}
+    </form>
+    <nav>
+        <a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Discover</a>
+        <a href="{{ url_for('my_ratings') }}" class="nav-link {% if request.endpoint == 'my_ratings' %}active{% endif %}">My Ratings</a>
+        <a href="{{ url_for('logout') }}" class="nav-link">Sign Out</a>
+    </nav>
+</header> 

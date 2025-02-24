@@ -1,0 +1,46 @@
+{% extends 'base_home.html' %}
+{% block head %}
+<title>My Ratings - FLIX</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="spline-container">
+    <iframe src='https://my.spline.design/dunes-957ae3a5f3155c2d746fcf0d71776458/' frameborder='0' width='100%' height='100%'></iframe>
+</div>
+
+<div class="main-content">
+    {% include 'includes/navbar.html' %}
+    
+    <div class="my-ratings-container">
+        <h1>My Ratings</h1>
+        {% if ratings %}
+        <div class="ratings-grid">
+            {% for rating in ratings %}
+            <div class="rating-card">
+                <div class="movie-poster">
+                    <img src="{{ rating.movie.image_url }}" alt="{{ rating.movie.title }}">
+                </div>
+                <div class="rating-details">
+                    <h2>{{ rating.movie.title }}</h2>
+                    <div class="rating-info">
+                        <span class="rating-value">{{ rating.rating }}/10</span>
+                        <span class="rating-date">{{ rating.date_posted.strftime('%B %d, %Y') }}</span>
+                    </div>
+                    <p class="review-text">{{ rating.review }}</p>
+                    <div class="rating-actions">
+                        <a href="{{ url_for('movie_detail', movie_id=rating.movie.id) }}" class="edit-button">Edit Rating</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-ratings">
+            <p>You haven't rated any movies yet.</p>
+            <a href="{{ url_for('home') }}" class="browse-movies">Browse Movies</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

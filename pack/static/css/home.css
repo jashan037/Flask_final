@@ -1,0 +1,763 @@
+/* styles.css */
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #141414;
+    --accent-color: #00ff9d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --hover-color: #00cc7d;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    padding-top: 80px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--accent-color);
+    letter-spacing: -1px;
+    z-index: 1001;
+}
+
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+    background: none;
+    border: none;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+input[type="text"] {
+    flex: 1;
+    margin: 0 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    max-width: 500px;
+    min-width: 200px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+nav .nav-link:hover {
+    background: rgba(0, 255, 157, 0.1);
+    color: var(--accent-color);
+}
+
+nav .nav-link.active {
+    background: rgba(0, 255, 157, 0.15);
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+main {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.movies {
+    text-align: center;
+}
+
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.movie {
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 255, 157, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 255, 157, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 255, 157, 0.2);
+    border-color: rgba(0, 255, 157, 0.3);
+}
+
+.movie-poster {
+    position: relative;
+    width: 100%;
+    padding-top: 150%; /* 2:3 aspect ratio for movie posters */
+}
+
+.movie-poster img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.movie-info h3 {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.movie-rating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 2;
+    border: 2px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.rating-value {
+    color: white;
+    font-size: 16px;
+}
+
+.rating-value::after {
+    content: '/10';
+    font-size: 12px;
+    opacity: 0.7;
+    margin-left: 2px;
+}
+
+.movie p {
+    padding: 10px;
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    background-color: var(--secondary-bg);
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* User Reviews Section Styles */
+.user-reviews-section {
+    margin-top: 30px;
+}
+
+.user-reviews-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.review-card {
+    background: var(--secondary-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #2a2a2a;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.reviewer-name {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.review-rating {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.review-date {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.review-content {
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.no-reviews {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Movie detail page styles */
+.movie-detail {
+    padding: 20px;
+}
+
+.movie-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.movie-detail .movie-poster {
+    width: 100%;
+    padding-top: 150%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.movie-detail .movie-poster img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-info {
+    color: #fff;
+}
+
+/* Rating section styles */
+.rating-section {
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.rating-stars {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.rating-stars input[type="radio"] {
+    display: none;
+}
+
+.rating-stars label {
+    cursor: pointer;
+    padding: 8px 16px;
+    background: #1a1a1a;
+    border-radius: 4px;
+    color: white;
+    transition: 0.3s;
+}
+
+.rating-stars input[type="radio"]:checked + label {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+textarea[name="review"] {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #333;
+    color: white;
+    border: none;
+    margin: 10px 0;
+    resize: vertical;
+}
+
+.submit-rating {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-rating:hover {
+    background: var(--hover-color);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .movie-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .nav-toggle {
+        display: block;
+        order: 3;
+        position: relative;
+        z-index: 1002;
+    }
+
+    nav {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #1a1a1a;
+        padding: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav .nav-link {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid #333;
+        text-align: left;
+    }
+
+    nav .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .search-form {
+        order: 2;
+        width: 100%;
+        margin: 10px 0;
+        flex-basis: 100%;
+    }
+
+    input[type="text"] {
+        order: 3;
+        width: 100%;
+        margin: 15px 0;
+    }
+    
+    .movie-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .movie-poster {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .movie-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rating-card {
+        flex-direction: row;
+    }
+
+    .rating-card .movie-poster {
+        width: 100px;
+        padding-top: 150px;
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .movie p {
+        font-size: 12px;
+    }
+    
+    .rating-stars label {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .movie-info h3 {
+        font-size: 12px;
+    }
+
+    .rating-card {
+        flex-direction: column;
+    }
+
+    .rating-card .movie-poster {
+        width: 100%;
+        padding-top: 150%;
+    }
+
+    .search-form {
+        margin: 10px 0;
+    }
+
+    .search-input {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+.my-ratings-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.my-ratings-container h1 {
+    color: var(--accent-color);
+    margin: 30px 0;
+    font-size: 32px;
+    text-align: center;
+}
+
+.ratings-grid {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 20px;
+}
+
+.rating-card {
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 255, 157, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 255, 157, 0.1);
+    transition: all 0.3s ease;
+}
+
+.rating-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 255, 157, 0.2);
+    border-color: rgba(0, 255, 157, 0.3);
+}
+
+.rating-details {
+    padding: 20px;
+}
+
+.rating-details h2 {
+    color: var(--text-primary);
+    margin: 0 0 15px 0;
+    font-size: 18px;
+}
+
+.rating-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rating-value {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.rating-date {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.review-text {
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.edit-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+.no-ratings {
+    text-align: center;
+    padding: 40px;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 157, 0.1);
+    border-radius: 12px;
+    margin: 20px;
+}
+
+.no-ratings p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.browse-movies {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.browse-movies:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+/* Add these styles to your existing CSS */
+
+.search-form {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 20px;
+    position: relative;
+    order: 1;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.search-form input[type="text"]:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-results h2 {
+    color: #f5c518;
+    margin: 20px 0;
+    padding: 0 20px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.no-results p {
+    color: #888;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.browse-all {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f5c518;
+    color: black;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.browse-all:hover {
+    background-color: #e3b408;
+}
+
+@media (max-width: 768px) {
+    .search-results h2 {
+        font-size: 1.2em;
+        padding: 0 15px;
+    }
+
+    .no-results {
+        margin: 15px;
+        padding: 20px;
+    }
+}
+
+/* Search results page poster */
+.search-results .movie-poster {
+    width: 100%;
+    padding-top: 150%;
+    position: relative;
+}
+
+.search-results .movie-poster img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movies h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+}
+
+/* Update hover effects */
+.movie:hover .movie-rating {
+    background: var(--accent-color);
+}
+
+.movie:hover .rating-value {
+    color: black;
+}
+
+.movie:hover .rating-value::after {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.movie:hover .movie-info {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.movie:hover .movie-info h3 {
+    color: var(--accent-color);
+}
+
+/* Add these styles at the top of your existing CSS */
+.spline-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background: var(--primary-bg);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.spline-container iframe {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, 
+                              rgba(0,0,0,0) 0%, 
+                              rgba(0,0,0,0.4) 100%);
+}

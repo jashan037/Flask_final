@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+{%block head%}
+<title>FLIX - Sign In</title>
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.68/build/spline-viewer.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+{%endblock%}
+{%block body%}
+<div class="spline-container">
+    <iframe src='https://my.spline.design/dunes-957ae3a5f3155c2d746fcf0d71776458/' frameborder='0' width='100%' height='100%'></iframe>
+</div>
+
+<div class="auth-container">
+    <div class="logo">
+        <h1>FLIX</h1>
+    </div>
+    <div class="form-container">
+        <h2>Welcome Back</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            {{form.hidden_tag()}}
+            <div class="form-group">
+                {{form.email.label(class='label')}}
+                {{form.email(class='input',placeholder='Enter your email')}}
+            </div>
+            <div class="form-group">
+                {{form.password.label(class='label')}}
+                {{form.password(class='input',placeholder='Enter your password')}}
+            </div>
+            {{form.submit(class='button')}}
+        </form>
+
+        <div class="divider">
+            <span>or</span>
+        </div>
+
+        <p class="signin">New to FLIX? <a href="{{url_for('register')}}">Create Account</a></p>
+    </div>
+</div>
+{%endblock%}
+
+<script>
+document.querySelector('spline-viewer').addEventListener('load', function() {
+    document.querySelector('.spline-container').classList.add('loaded');
+});
+</script>
